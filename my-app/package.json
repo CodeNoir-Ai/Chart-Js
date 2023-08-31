@@ -1,0 +1,37 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "ajax": "^0.0.4",
+    "anychart": "^8.11.1",
+    "anychart-react": "^1.4.1",
+    "chart": "^0.1.2",
+    "chart.js": "^4.3.3",
+    "cors": "^2.8.5",
+    "d3": "^7.8.5",
+    "d3-array": "^3.2.4",
+    "d3-axis": "^3.0.0",
+    "d3-dsv": "^3.0.1",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
+    "d3fc": "^15.2.6",
+    "express": "^4.18.2",
+    "lightweight-charts": "^4.0.1",
+    "next": "13.4.18",
+    "react": "18.2.0",
+    "react-d3": "^0.4.0",
+    "react-dom": "18.2.0",
+    "simplebar": "^6.2.5"
+  },
+  "devDependencies": {
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.18"
+  }
+}

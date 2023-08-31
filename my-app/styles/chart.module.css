@@ -1,0 +1,472 @@
+
+
+/* Global Styles */
+.nav_container{
+    /* margin: 0.5rem 0.3rem; */
+}
+.navigation_wrapper{
+    display: flex;
+    gap: 5px;
+    margin-left: 3rem;
+    align-self: flex-end;
+}
+
+.grid_container{
+    margin-top: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    position: relative;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    gap: 15px;
+    padding: .2em;
+}
+
+.margin_right_2{
+    margin-right: 1em;
+}
+
+.margin_top_10{
+    margin: 20px 0px;
+}
+.margin_top_5 { 
+    margin: 5px 0px;
+}
+.marginRight_10{
+    margin-right: 10px;
+}
+.med_text{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.logo_wrapper{
+    padding: .3em 0em;
+    display: flex;
+    align-items: center;
+}
+.logo_wrapper h2 {
+    color: #6CA227;
+  }
+
+.flex_row{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.padding_5{
+    padding: 0px 1.5em;
+}
+.flex_center{
+    justify-content: space-evenly !important;
+}
+.flex_betweem{
+    justify-content: space-between !important;
+}
+.flex_start{
+    justify-content: start;
+}
+.gap_5{
+    gap: 5px !important;
+}
+.inline_flex{
+    padding: 0px 5px;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: space-between;
+    color: #646464;
+}
+.inline_flex .flex_grow {
+    flex: 1;
+    text-align: right;
+}
+
+.lower_padding{
+    padding-right: .2em;
+    padding-left:  0px;
+}
+#small_text{
+    font-size: 14px;
+    margin: 0px 5px;
+}
+
+
+.icon_container{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.icon_container img { 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* Global Styles */
+
+.chart_selector_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid rgba(225, 225, 225, 0.78);;
+
+}
+
+.chart_selector{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 0.4rem;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+.btn_selected
+{
+    color:#3060FF !important;
+}
+.search_bar{
+    font-size: 14px;
+    font-weight: 800;
+    margin-right: 15px;
+}
+
+
+.chart_selector button{
+    color: #1a1a1a;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+/* Rendering New Chart Compontent Styling  */
+
+.render_new_chart_container
+{ 
+    background: #F5F5F5;
+}
+.render_wrapper{
+    display: flex;
+    gap: 5px;
+}
+
+.render_tag{ 
+    text-align: center;
+    padding: 0.35rem 1rem;
+    margin-top: 0.3rem;
+    margin-right: 0.3rem;
+    background: #EAF1E4;
+    font-size: 11px;
+    cursor: pointer;
+    color: rgb(120, 120, 120);
+
+}
+.dark_green{
+    background: #EAF1E4 !important;
+    width: 100%;
+
+}
+.render_tag_nav{ 
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(231, 231, 231, 0.927) !important;
+    padding: 0.4em;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color:#969696;
+    font-weight: 300;
+    
+
+}
+
+.render_width{
+    width: 100%;
+    margin-right: 0px;
+}
+.selected{
+    background: #fff !important;
+}
+
+
+.search_bar{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.search_imageContainer{
+    width: 20px;
+    height: 20px;
+}
+.search_imageContainer img { 
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+
+}
+.render_tag img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.add_image_icon{
+    width: 10px;
+    height: 10px;
+}
+
+.chart_dropdown_image{
+    width: 10px;
+    height: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.chart_dropdown_image img, .chart_dropdown_image_large img { 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.chart_dropdown_image_large{
+    width: 25px;
+    height: 30px;
+    margin: 0px 4px;
+    cursor: pointer;
+}
+.chart_dropdown_image_large:hover{
+    background: #F5F5F5;
+    border-radius: 9px;
+}
+
+
+.spacing_container{
+    margin-left: 30px;
+    display: flex;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.publishBtn{
+    background: #3060FF !important;
+    color: #fff !important;
+    padding: 5px 5px;
+    width: 75px;
+    border-radius: 25px;;
+    font-size: 13px !important;
+}
+
+.grid_main{ 
+    display: grid;
+    grid-template-columns: 50px 1fr 400px;
+  }
+  
+  .button_wrapper{
+    background-color: #F5F5F5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .button_wrapper ul { 
+    padding-left: 0px;
+  }
+  .button_wrapper ul li 
+  { 
+    list-style: none;
+   
+  }
+
+  .grid_component{
+    display: flex;
+
+  }
+  .flex_grow{
+    flex: 1;
+  }
+  .button_container{
+    width: 50px;
+    min-width: 50px;
+    background: #F5F5F5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8px 0px;
+  }
+/* Rendering New Chart Compontent Styling  */
+
+
+/* Contents holding most of chart components  */
+
+@media screen and (min-width: 1500px){
+    .chart_contents_container{ 
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+}
+.chart_contents_container{ 
+    border-left: 1px solid rgba(225, 225, 225, 0.78);
+    border-right: 5px solid rgba(225, 225, 225, 0.78);
+    margin-right: 5px;
+    height: 100%;
+}
+.chart_contents_wrapper{
+    border-bottom: 1px solid rgba(225, 225, 225, 0.78);
+
+}
+
+
+.green{
+    background: #C6EA9C;}
+.red{
+    background: #FA5C56;}
+.red img { 
+    transform: rotate(180deg);
+}
+.largeBtn{
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    cursor: pointer;
+    height: 50px;
+}
+.btnImage{
+    width: 30px;
+    height: 30px;
+}
+.btnImage img {
+    width: 100%;
+    height: 100%;
+}
+.small_gap{
+    gap:5px;
+    width: 95px;
+
+}
+.number_container{ 
+    background: #EAF1E4;
+    padding: 0.2rem;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.number_container p {
+    margin: 2px;
+    width: 80px;
+}
+
+
+/* Contents holding most of chart components  */
+
+
+/* Chart Data Contents Styling  */
+.data_contents{ 
+    position: relative;
+    font-size: 12px;
+}
+.flex_between{
+    justify-content: space-between !important;
+    padding: .5rem 0rem;
+}
+
+.grey{
+    background-color: #dbdbdb;;
+}
+
+/* Custom Scroll */
+.overflow_scroll{
+    overflow-y: scroll !important;
+    height: 200px;
+}
+
+.overflow_scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.overflow_scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(207, 207, 207); 
+}
+
+.overflow_scroll::-webkit-scrollbar-thumb {
+  background: #EDF5E7; 
+  height: 20px !important;
+}
+
+.overflow_scroll::-webkit-scrollbar-thumb:hover {
+  background: #EDF5E7; 
+}
+
+/* Custom Scroll */
+
+
+/* Chart Data Contents Styling  */
+
+
+
+/* Chat Form Styling  */
+.chat_bg{
+    background-color: rgba(225, 225, 225, 0.78);
+
+}
+.chat_container{
+    height: 300px;
+}
+.chat_wrapper{
+    padding: 1rem
+}
+.chat_form{
+    display: flex;
+    justify-content: center;
+    
+}
+.chat_form input {
+    background: white;
+    border: none;
+    height: 35px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 10px;
+}
+.chat_form input::placeholder
+{
+    color: #1a1a1a;
+}
+
+.empty_div{
+    width: 50px;
+}
+
+
+
+/* Chat Form Styling  */
+
+
+
+/* Bottom CandleStickStyling  */
+.chart_dates_container{
+    margin-left: 1.5em;
+    padding-bottom: 1em;
+}
+.dates{
+    font-size: 13px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.icon_button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+/* Bottom CandleStickStyling  */
