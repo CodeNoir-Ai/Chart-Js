@@ -155,7 +155,7 @@ const CandlestickChartV2 = () => {
     const drawChart = (context, x, y, data, candleWidth, spacing) => {
         // Updated logic to use dynamic candleWidth and to prevent overlapping
         data.forEach((d, i) => {
-          const xPos = x(d.Date) - candleWidth / 2 + i * spacing;
+          const xPos = x(d.Date) - candleWidth;
           context.fillStyle = d.Open > d.Close ? '#FF4136' : '#2ECC40';
           context.fillRect(xPos, y(Math.max(d.Open, d.Close)), candleWidth, Math.abs(y(d.Open) - y(d.Close)));
     
