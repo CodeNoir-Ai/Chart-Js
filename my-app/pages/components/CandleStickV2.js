@@ -71,6 +71,7 @@ const CandlestickChartV2 = () => {
             const barSpacing = (width - marginLeft - marginRight) / filteredData.length;
 
 
+            let scalingFactor = 3;
             const maxCandleWidth = 50;  // Set a maximum limit for the candle width
             const minCandleWidth = 1;   // Set a minimum limit for the candle width
             const baseCandleWidth = (width - marginLeft - marginRight) / filteredData.length;  // Calculate base candle width
