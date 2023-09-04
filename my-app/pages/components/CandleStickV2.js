@@ -68,20 +68,14 @@ const CandlestickChartV2 = () => {
             //Filterd Data
             const filteredData = ticker.filter(d => d.Date >= visibleRange[0] && d.Date <= visibleRange[1]);
             //Cacluate Bar Spacing
+            const barSpacing = (width - marginLeft - marginRight) / filteredData.length;
 
 
             const maxCandleWidth = 50;  // Set a maximum limit for the candle width
             const minCandleWidth = 1;   // Set a minimum limit for the candle width
+            const baseCandleWidth = (width - marginLeft - marginRight) / filteredData.length;  // Calculate base candle width
 
-            let scalingFactor = 3;
-            const baseCandleWidth = (width - marginLeft - marginRight) / filteredData.length * scalingFactor ;  // Calculate base candle width
-
-
-        const barSpacing = (width - marginLeft - marginRight) / filteredData.length;
-
-        // Calculate the horizontal pixel ratio. This might differ based on your actual implementation.
-        const horizontalPixelRatio = 1; // Replace with your actual horizontalPixelRatio
-            let newCandleWidth = optimalCandlestickWidth(barSpacing, horizontalPixelRatio, filteredData.length);
+            let newCandleWidth = Math.max(minCandleWidth, Math.min(maxCandleWidth, baseCandleWidth));
             let newSpacing = newCandleWidth * 0.2;  // 20% of the candle width for spacing
             
    
@@ -95,7 +89,7 @@ const CandlestickChartV2 = () => {
 
     
             context.clearRect(0, 0, width, height);  // Clear canvas
-            drawChart(context, zx, zy, ticker, newCandleWidth, newSpacing);  // Redraw with newSpacing
+            drawChart(context, zx, zy, filteredData, newCandleWidth, newSpacing);  // Redraw with newSpacing
             drawAxes(context, zx, zy, xAxis, yAxis, width, height, marginLeft, marginBottom); // Redraw axes
         });
     
