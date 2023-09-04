@@ -6,12 +6,10 @@ import ChartComponent from './components/chart_component'
 import ChartContents from './components/chat_contents'
 import HeartIcon from '../public/chart_assets/heart-icon.png';
 import Image from 'next/image';
-
-import Chartleft from './components/chart_data/chart_left';
 import Chartright from './components/chart_right';
 
-import LineChart from './components/LineChart'
-
+import Chartleft from './components/chart_data/chart_left'
+import LineChart from './components/LineChartV2'
 
 export default function Home()
 
@@ -19,14 +17,17 @@ export default function Home()
     return(
         
         <div>
-            <ChartComponent />
+            {/* <ChartComponent /> */}
+
+            <LineChart />
+
 
             <div className = {styles.grid_main}>
 
-                <Chartleft />
-                <CandlestickChart />
-                <ChartContents />
-                <Chartright />
+                {/* <Chartleft /> */}
+                {/* <CandlestickChartV2 /> */}
+                {/* <ChartContents /> */}
+                {/* <Chartright /> */}
 
 
 

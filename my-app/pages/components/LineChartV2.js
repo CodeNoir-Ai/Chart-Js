@@ -1,72 +1,93 @@
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import MainData from '../../public/assets/XRP-USD.json';
-import styles from '../../styles/chart.module.css'
+import MainData from '../../public/assets/XRP-USD.json';  // Assuming this is correct
+import styles from '../../styles/chart.module.css';
 
+const LineChart = () => {
+  const chartRef = useRef(null);
 
+  useEffect(() => { 
+    const margin = { top: 70, right: 60, bottom: 50, left: 80 };
+    const width = 1058;
+    const height = 880;
 
+    const x = d3.scaleTime().range([0, width]);
+    const y = d3.scaleLinear().range([height, 0]);
 
-const CandlestickChart = () => {
-    const chartRef = useRef(null);
+    // Create SVG element instead of canvas for using D3's axis methods
+    const svg = d3.select(chartRef.current)
+                  .append('svg')
+                  .attr('width', width + margin.left + margin.right)
+                  .attr('height', height + margin.top + margin.bottom)
+                  .append('g')
+                  .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-    useEffect(() => {
-        if (chartRef.current) {
-            //load data
+    // Load and process the data 
+    // Assuming MainData is an array, you can directly use it
+    const data = MainData;
 
-            const ticker = MainData.map(d => ({
-                ...d,
-                Date: new Date(d.Date),
-                Open: +d.Open,
-                High: +d.High,
-                Low: +d.Low,
-                Close: +d.Close,
+    // Parse the date and convert the close to a number 
+    const parseDate = d3.timeParse("%Y-%m-%d");
+    data.forEach(d => { 
+      d.Date = parseDate(d.Date);
+      d.Close = +d.Close;
+    });
 
-            }));
+    // Set the domains for x and y scales 
+    x.domain(d3.extent(data, d => d.Date));
+    y.domain([0, d3.max(data, d => d.Close)]);
 
-              // Declare the chart dimensions and margins.
-            const width = 928;
-            const height =880;
-            const marginTop = 20;
-            const marginRight = 30;
-            const marginBottom = 30;
-            const marginLeft = 40;
-            const totalCandlesticks = ticker.length;
-            const totalAvailableWidth = width - marginLeft - marginRight;
-            const candleWidth = totalAvailableWidth / totalCandlesticks * 0.8; // 80% width for the candlestick
-            const gap = totalAvailableWidth / totalCandlesticks * 0.2; // 20% width for the gap
-        }
+    // Add the x-axis
+    svg.append("g")
+      .attr("transform", `translate(0, ${height})`)
+      .call(d3.axisBottom(x));
 
-
-
-        const drawChart = () => 
-        { 
-            
-        }
+    // Move the y-axis to the right
+    svg.append("g")
+      .attr("transform", `translate(${width}, 0)`)
+      .call(d3.axisRight(y).tickFormat(d => `$${d.toFixed(2)}`));
     
 
+      const line = d3.line()
+      .x(d => x(d.Date))
+      .y(d => y(d.Close))
 
-    }, [MainData])
+        //Area chart 
+        const area = d3.area() 
+        .x(d => x(d.Date))
+        .y0(height)
+        .y1(d => y(d.Close))
+
+        //Add area path
+        svg.append("path")
+            .datum(data)
+            .attr("class", "area")
+            .attr("d", area)
+            .style("fill", "#85bb65")
+            .style("opacity", .5)
+
+        //Add the line path 
+
+        svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("fill", "none")
+        .attr("stroke", "#85bb65")
+        .attr("stroke-width", 1)
+        .attr("d", line)
 
 
 
 
 
-    return(
 
-        <div className = "chart-container">
+  }, []);
 
-        
-      <div ref={chartRef} className = "candlestick_chart" />
-    
-
-
+  return (
+    <div className="chart-container">
+      <div ref={chartRef} className="candlestick_chart" />
     </div>
+  );
+};
 
-    )
-
-
-
-;
-    }
+export default LineChart;

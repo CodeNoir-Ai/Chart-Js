@@ -79,12 +79,12 @@ const CandlestickChartV2 = () => {
             let newSpacing = initialSpacing * newTransform.k;
             
             // Apply limits
-            newCandleWidth = Math.min(Math.max(newCandleWidth, 1), 50);
-            newSpacing = Math.min(Math.max(newSpacing, 0.1), 20);
-            
-              // Log for debugging
-  console.log("Filtered Data Length:", filteredData.length);
-  console.log("New Candle Width:", newCandleWidth);
+            newCandleWidth = Math.min(Math.max(newCandleWidth, 1), 200);
+            newSpacing = Math.min(Math.max(newSpacing, 0.5), 200);
+                  
+                    // Log for debugging
+        console.log("Filtered Data Length:", filteredData.length);
+        console.log("New Candle Width:", newCandleWidth);
 
     
             context.clearRect(0, 0, width, height);  // Clear canvas
