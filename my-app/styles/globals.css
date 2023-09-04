@@ -10,6 +10,21 @@
 rect{
   fill-opacity: 1 !important;
 }
+.tooltip
+{ 
+  position: absolute;
+  padding: 5px;
+  background: rgb(11,40,65);
+  color:#fff;
+  border: 0px solid white;
+  border: 0px;
+  display: none;
+  opacity: .75;
+  font-size: 14px;
+}
+.tooltip-line{ 
+  stroke-opacity: 0.5;
+}
 #chart svg {
   width: 100% !important;
 }

@@ -9,8 +9,9 @@ import Image from 'next/image';
 import Chartright from './components/chart_right';
 
 import Chartleft from './components/chart_data/chart_left'
-import LineChart from './components/LineChartV2'
+import LineChart from './components/LineChartV2' 
 
+import TradingChart from './components/TradingView'
 export default function Home()
 
 {
@@ -19,15 +20,15 @@ export default function Home()
         <div>
             {/* <ChartComponent /> */}
 
-            <LineChart />
+            {/* <TradingChart /> */}
 
 
             <div className = {styles.grid_main}>
 
-                {/* <Chartleft /> */}
-                {/* <CandlestickChartV2 /> */}
-                {/* <ChartContents /> */}
-                {/* <Chartright /> */}
+                <Chartleft />
+                <CandlestickChartV2 />
+                <ChartContents />
+                <Chartright />
 
 
 

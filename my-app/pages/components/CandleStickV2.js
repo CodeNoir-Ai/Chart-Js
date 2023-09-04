@@ -4,6 +4,8 @@ import * as d3 from 'd3';
 import MainData from '../../public/assets/XRP-USD.json';
 import styles from '../../styles/chart.module.css'
 
+import { optimalCandlestickWidth } from '../helper/optimal-bar';
+
 const CandlestickChartV2 = () => {
     const chartRef = useRef(null);
   
@@ -41,7 +43,7 @@ const CandlestickChartV2 = () => {
         // Create Canvas
         const canvas = d3.select(chartRef.current).append('canvas').attr('width', width).attr('height', height);
         const context = canvas.node().getContext('2d');
-
+        context.imageSmoothingQuality = "high";
         context.imageSmoothingEnabled = false;
 
     
@@ -50,41 +52,46 @@ const CandlestickChartV2 = () => {
         const yAxis = d3.axisRight(y);
   
         // Initialize zoom
-        let lastScaleFactor = 1;  // Initialize last scale factor
 
         const zoom = d3.zoom()
         .scaleExtent([0.5, 32])
         .translateExtent([[marginLeft, -Infinity], [width - marginRight, Infinity]])
         .on('zoom', function(event) {
-            const previousTransform = d3.zoomTransform(this);
             const newTransform = event.transform;
     
-            const isZoom = previousTransform.k !== newTransform.k;
-            const isPan = previousTransform.x !== newTransform.x || previousTransform.y !== newTransform.y;
-    
-            const zx = newTransform.rescaleX(x);
+            const zx = event.transform.rescaleX(x);
             const zy = newTransform.rescaleY(y);
     
             // Calculate new candle width based on zoom factor
-            // [NEW] Calculate new candle width based on the number of visible data points
             const visibleRange = zx.domain();
-            const filteredData = ticker.filter(d => d.Date >= visibleRange[0] && d.Date <= visibleRange[1]);
 
-            let initialWidthOfOneCandle = (width - marginLeft - marginRight) / ticker.length;
-            let initialSpacing = initialWidthOfOneCandle * 0.2;  // 20% of the candle width
-            let initialCandleWidth = initialWidthOfOneCandle * 0.8;  // 80% of the candle width
+            //Filterd Data
+            const filteredData = ticker.filter(d => d.Date >= visibleRange[0] && d.Date <= visibleRange[1]);
+            //Cacluate Bar Spacing
+
+
+            const maxCandleWidth = 50;  // Set a maximum limit for the candle width
+            const minCandleWidth = 1;   // Set a minimum limit for the candle width
+
+            let scalingFactor = 3;
+            const baseCandleWidth = (width - marginLeft - marginRight) / filteredData.length * scalingFactor ;  // Calculate base candle width
+
+
+        const barSpacing = (width - marginLeft - marginRight) / filteredData.length;
+
+        // Calculate the horizontal pixel ratio. This might differ based on your actual implementation.
+        const horizontalPixelRatio = 1; // Replace with your actual horizontalPixelRatio
+            let newCandleWidth = optimalCandlestickWidth(barSpacing, horizontalPixelRatio, filteredData.length);
+            let newSpacing = newCandleWidth * 0.2;  // 20% of the candle width for spacing
             
-            // In the zoom function
-            let newCandleWidth = initialCandleWidth * newTransform.k;
-            let newSpacing = initialSpacing * newTransform.k;
-            
-            // Apply limits
-            newCandleWidth = Math.min(Math.max(newCandleWidth, 1), 200);
-            newSpacing = Math.min(Math.max(newSpacing, 0.5), 200);
-                  
+   
                     // Log for debugging
-        console.log("Filtered Data Length:", filteredData.length);
-        console.log("New Candle Width:", newCandleWidth);
+            console.log("Filtered Data Length:", filteredData.length);
+            console.log("New Candle Width:", newCandleWidth);
+
+
+
+
 
     
             context.clearRect(0, 0, width, height);  // Clear canvas
@@ -101,7 +108,6 @@ const CandlestickChartV2 = () => {
         let crosshairX = 0;
         let crosshairY = 0;
 
-        // ... (Your existing setup code, scales, etc.)
 
         const drawCrosshair = (context, x, y, width, height, marginLeft, marginBottom) => {
             context.strokeStyle = 'black';
@@ -164,7 +170,16 @@ const CandlestickChartV2 = () => {
           context.moveTo(xPos + candleWidth / 2, y(d.Low));
           context.lineTo(xPos + candleWidth / 2, y(d.High));
           context.stroke();
+
+          console.log("this is being redrawn")
+
+
+
+
         });
+
+
+
     };
 
     const drawCrosshair = (context, x, y, width, height, marginLeft, marginBottom, options = {}) => {
